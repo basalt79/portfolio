@@ -1,0 +1,19 @@
+---
+const { pos, idx, descIdPrefix, showLeftLine } = Astro.props;
+const descId = `${descIdPrefix}-multi-${idx}`;
+---
+
+<div class="relative flex items-start gap-3">
+  
+  <div class={`${showLeftLine ? ' absolute -left-8 top-3 w-3 h-3 bg-blue-500 rounded-full' : ''}`}></div>
+  <div>
+    <h4 class="font-semibold text-green-900">{pos.title}</h4>
+    <p class="text-sm italic text-green-600">{pos.duration}</p>
+    <button
+      class="text-xs text-blue-600 underline mb-1"
+      type="button"
+      onclick={`const d=document.getElementById('${descId}');d.hidden=!d.hidden;this.textContent=d.hidden?'See more':'See less';`}
+    >See more</button>
+    <pre id={descId} class="text-sm mt-1 text-green-700" hidden>{pos.description}</pre>
+  </div>
+</div>

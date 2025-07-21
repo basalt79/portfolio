@@ -1,0 +1,53 @@
+---
+import TimelinePosition from "./timelinePosition.astro";
+const { company, duration, description, logo, positions } = Astro.props;
+const multiplePositions = positions && positions.length > 1;
+
+// Generate a unique id for the description element
+const descId = `desc-${company.replace(/\s+/g, '-')}-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class="relative pl-12 border-l-4 border-blue-500 pb-10">
+  <div class="absolute -left-6 top-1 w-12 h-12 bg-white border-4 border-blue-500 rounded-full flex items-center justify-center">
+    {logo
+      ? <div class="w-8 h-8" set:html={logo || ''} />
+      : <div class="w-4 h-4 bg-blue-500 rounded-full" />}
+  </div>
+
+  <div class="mb-6">
+    <h3 class="text-3xl font-bold">{company}</h3>
+
+    {/* Show company duration only if multiple positions exist */}
+    {multiplePositions && duration && (
+      <p class="italic text-green-500">{duration}</p>
+    )}
+
+    {/* Show description only if no positions */}
+    {!positions && description && (
+      <>
+        <button
+          class="text-xs text-blue-600 underline mb-2"
+          type="button"
+          onclick={`const d=document.getElementById('${descId}');d.hidden=!d.hidden;this.textContent=d.hidden?'See more':'See less';`}
+        >See more</button>
+        <p id={descId} class="mt-2 text-green-800" hidden>{description}</p>
+      </>
+    )}
+
+    {/* If single position, show title, duration, description here */}
+    {!multiplePositions && positions && positions.length === 1 && (
+      <div class="ml-6 pl-6">
+        <TimelinePosition pos={positions[0]} idx={0} descIdPrefix={descId} showLeftLine={false} />
+      </div>
+    )}
+  </div>
+
+  {/* Positions list for multiple positions */}
+  {multiplePositions && (
+    <div class="space-y-6 ml-6 border-l-1 border-green-300 pl-6">
+      {positions.map((pos, idx) => (
+        <TimelinePosition pos={pos} idx={idx} descIdPrefix={descId} showLeftLine={true} />
+      ))}
+    </div>
+  )}
+</div>
