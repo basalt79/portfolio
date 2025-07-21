@@ -1,0 +1,41 @@
+---
+import TimelineItem from './timelineitem.astro';
+
+const experiences = [
+  {
+    company: 'Erste Bank',
+    title: 'AI Researcher',
+    duration: 'Jan 2022 – Present',
+    description: 'Worked on GPT-based applications and advanced ML pipelines.',
+    logo: '/portfolio/logos/erste.png',
+  },
+  {
+    company: 'Google',
+    title: 'Software Engineer',
+    duration: 'Jun 2019 – Dec 2021',
+    description: 'Developed large-scale backend services and internal tools.',
+    logo: '',
+  },
+  {
+    company: 'Startup Inc.',
+    title: 'Frontend Developer',
+    duration: 'Jan 2017 – May 2019',
+    description: 'Built and maintained the company’s main React SPA.',
+    logo: '',
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <title>Company Timeline</title>
+  </head>
+  <body class="bg-white text-gray-900 px-6 py-12">
+    <h1 class="text-3xl font-bold mb-8">Professional Timeline</h1>
+    <section class="relative">
+      {experiences.map(exp => (
+        <TimelineItem {...exp} />
+      ))}
+    </section>
+  </body>
+</html>

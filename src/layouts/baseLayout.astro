@@ -1,0 +1,34 @@
+---
+import Footer from "../components/footer.astro";
+import Header from "../components/header.astro";
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/portfolio/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Aigner Georg - Software Architect</title>
+  </head>
+  <body>
+    <div id="top"></div>
+    <Header />
+    <main>
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

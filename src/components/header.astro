@@ -1,0 +1,97 @@
+---
+---
+
+<header class="fixed top-0 left-0 right-0 bg-white shadow z-50 flex items-center justify-between px-6 py-4">
+  <a href="#top" class="text-xl font-bold text-indigo-700 hover:text-indigo-900">YourName</a>
+
+  <!-- Desktop menu -->
+  <nav class="hidden md:flex md:gap-8 text-gray-700 font-medium text-sm">
+    <ul class="flex gap-8">
+      <li><a href="#skills" class="hover:text-indigo-600 transition">Skills</a></li>
+      <li><a href="#projects" class="hover:text-indigo-600 transition">Projects</a></li>
+      <li><a href="#contact" class="hover:text-indigo-600 transition">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hamburger (mobile only) -->
+  <button
+    id="menu-btn"
+    aria-label="Open menu"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    class="md:hidden focus:outline-none z-50"
+  >
+    <svg
+      class="w-6 h-6 text-indigo-700"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  <!-- Backdrop -->
+  <div
+    id="menu-backdrop"
+    class="fixed inset-0 hidden z-40 bg-black/60"
+  ></div>
+
+  <!-- Side drawer menu -->
+  <aside
+    id="mobile-menu"
+    class="fixed top-0 right-0 h-full w-3/5 max-w-xs bg-white shadow-lg hidden flex flex-col p-8 z-50"
+    role="dialog"
+    aria-modal="true"
+  >
+    <button
+      id="menu-close-btn"
+      aria-label="Close menu"
+      class="self-end text-gray-700 text-4xl focus:outline-none"
+    >
+      &times;
+    </button>
+
+    <nav class="mt-12 flex flex-col gap-8 text-gray-700 text-2xl font-semibold">
+      <a href="#skills" class="hover:text-indigo-600 transition">Skills</a>
+      <a href="#projects" class="hover:text-indigo-600 transition">Projects</a>
+      <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+    </nav>
+  </aside>
+
+  <script is:inline>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuCloseBtn = document.getElementById('menu-close-btn');
+    const backdrop = document.getElementById('menu-backdrop');
+
+    function openMenu() {
+      mobileMenu.classList.remove('hidden');
+      backdrop.classList.remove('hidden');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.add('hidden');
+      backdrop.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', openMenu);
+    menuCloseBtn.addEventListener('click', closeMenu);
+    backdrop.addEventListener('click', closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+      }
+    });
+  </script>
+</header>
