@@ -9,15 +9,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "predeploy": "npm run build && touch dist/.nojekyll",
-    "deploy": "gh-pages -d dist -b gh-pages -f"
+    "cb": "npm run clean && npm install && npm run build"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.12.0",
     "tailwindcss": "^4.1.11"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
   }
 }

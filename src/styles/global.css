@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+
+:root {
+  --color-text: green;
+  --color-background: #1f2937;
+}
+
+
 #container {
   font-weight: bold;
   font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
@@ -8,4 +15,9 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-background);
 }
