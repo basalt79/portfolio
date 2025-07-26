@@ -1,13 +1,13 @@
 ---
 import TimelinePosition from "./timelinePosition.astro";
-const { company, duration, description, logo, positions } = Astro.props;
+const { company, homepage, duration, description, logo, positions } = Astro.props;
 const multiplePositions = positions && positions.length > 1;
 
 // Generate a unique id for the description element
 const descId = `desc-${company.replace(/\s+/g, '-')}-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
-<div class="relative pl-12 border-l-4 border-blue-500 pb-10">
+<div class="timeline-card card-hover-effect relative pl-12 border-l-4 border-blue-500 pb-10 mb-8">
   <div class="absolute -left-6 top-1 w-12 h-12 bg-white border-4 border-blue-500 rounded-full flex items-center justify-center">
     {logo
       ? <div class="w-8 h-8" set:html={logo || ''} />
@@ -16,6 +16,18 @@ const descId = `desc-${company.replace(/\s+/g, '-')}-${Math.random().toString(36
 
   <div class="mb-6">
     <h3 class="text-3xl font-bold">{company}</h3>
+    {homepage && (
+      <a
+        href={homepage.startsWith('http') ? homepage : `https://${homepage}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-blue-600 hover:underline break-all"
+        aria-label={`Visit homepage of ${company}`}
+      >
+        {homepage.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+      </a>
+    )}
+
 
     {/* Show company duration only if multiple positions exist */}
     {multiplePositions && duration && (

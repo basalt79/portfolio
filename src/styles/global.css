@@ -2,8 +2,64 @@
 
 
 :root {
-  --color-text: green;
-  --color-background: #1f2937;
+  /* Text and background */
+  --color-text: #ffbf00;            /* amber */
+  --color-background: #181818;      /* terminal black */
+
+
+  /* Hero background gradient */
+  --hero-bg-from: #181818;          /* terminal black */
+  --hero-bg-via: #222222;           /* slightly lighter black */
+  --hero-bg-to: #333333;            /* dark gray */
+
+  /* Hero text gradient */
+  --hero-text-gradient-from: #ffbf00;   /* amber */
+  --hero-text-gradient-via: #fff200;    /* yellow */
+  --hero-text-gradient-to: #ff8000;     /* orange */
+
+  /* Hero highlight colors */
+  --hero-highlight-yellow: #fff200;     /* yellow */
+  --hero-highlight-pink: #ff80bf;       /* soft magenta */
+  --hero-highlight-blue: #00ffe7;       /* cyan for accent */
+  
+  /* Card */
+  --card-bg: rgba(55,65,81,0.95);
+  --card-border-hover: #fff200;
+
+
+
+  /* Timeline */
+  --timeline-dot: #ffbf00; /* amber */
+}
+
+.skill-card {
+  background: linear-gradient(135deg, var(--hero-bg-from), var(--hero-bg-via), var(--hero-bg-to));
+  color: var(--color-text);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.timeline-card {
+  background: linear-gradient(135deg, var(--hero-bg-from), var(--hero-bg-via), var(--hero-bg-to));
+  color: var(--color-text);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  transition: 
+    box-shadow 0.25s cubic-bezier(.4,2,.6,1), 
+    border-color 0.2s, 
+    transform 0.2s cubic-bezier(.4,2,.6,1);
+}
+
+.card-hover-effect {
+  transition:
+    box-shadow 0.25s cubic-bezier(.4,2,.6,1),
+    border-color 0.2s,
+    transform 0.2s cubic-bezier(.4,2,.6,1);
+}
+.card-hover-effect:hover {
+  box-shadow: 0 12px 32px 0 rgba(0,0,0,0.35), 0 2px 8px 0 rgba(0,0,0,0.10);
+  border-color: var(--hero-highlight-blue);
+  transform: translateY(-8px) scale(1.03);
 }
 
 

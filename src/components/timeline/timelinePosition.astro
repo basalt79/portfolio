@@ -3,17 +3,27 @@ const { pos, idx, descIdPrefix, showLeftLine } = Astro.props;
 const descId = `${descIdPrefix}-multi-${idx}`;
 ---
 
-<div class="relative flex items-start gap-3">
-  
-  <div class={`${showLeftLine ? ' absolute -left-8 top-3 w-3 h-3 bg-blue-500 rounded-full' : ''}`}></div>
+<div class={`relative flex items-start gap-3 ${showLeftLine ? 'border-l-2 pl-6' : ''}`} style={showLeftLine ? "border-color: var(--timeline-line, var(--hero-bg-from));" : ""}>
+  {showLeftLine && (
+    <div class="absolute -left-8 top-3 w-3 h-3 rounded-full"
+         style="background: var(--timeline-dot, var(--hero-bg-from));"></div>
+  )}
   <div>
-    <h4 class="font-semibold text-green-900">{pos.title}</h4>
-    <p class="text-sm italic text-green-600">{pos.duration}</p>
+    <h4 class="font-semibold" style="color: var(--color-text);">{pos.title}</h4>
+    <p class="text-sm italic" style="color: var(--hero-highlight-blue);">{pos.duration}</p>
     <button
-      class="text-xs text-blue-600 underline mb-1"
+      class="text-xs underline mb-1"
       type="button"
+      style="color: var(--color-text);"
       onclick={`const d=document.getElementById('${descId}');d.hidden=!d.hidden;this.textContent=d.hidden?'See more':'See less';`}
     >See more</button>
-    <pre id={descId} class="text-sm mt-1 text-green-700" hidden>{pos.description}</pre>
+    <div
+      id={descId}
+      class="text-sm mt-3 font-mono rounded-lg border border-amber-400 bg-black/70 p-4 mr-8 shadow-lg transition-all duration-300 overflow-auto break-words max-w-2xl whitespace-pre-line"
+      style="color: var(--color-text);"
+      hidden
+    >
+      {pos.description}
+    </div>
   </div>
 </div>

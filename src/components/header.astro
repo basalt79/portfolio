@@ -1,16 +1,17 @@
 ---
 ---
 
-<header class="fixed top-0 left-0 right-0 bg-white shadow z-50 flex items-center justify-between px-6 py-4">
-  <a href="#top" class="text-xl font-bold text-indigo-700 hover:text-indigo-900">YourName</a>
+<header class="fixed top-0 left-0 right-0 shadow z-50 flex items-center justify-between px-6 py-4"
+        style="background: var(--color-background);">
+  <a href="#top" class="text-xl font-bold hover:underline" style="color: var(--color-text);">Georg Aigner</a>
 
   <!-- Desktop menu -->
-  <nav class="hidden md:flex md:gap-8 text-gray-700 font-medium text-sm">
+  <nav class="hidden md:flex md:gap-8 font-medium text-sm" style="color: var(--color-text);">
     <ul class="flex gap-8">
-      <li><a href="#skills" class="hover:text-indigo-600 transition">Skills</a></li>
-      <li><a href="#timeline" class="hover:text-indigo-600 transition">Timeline</a></li>
-      <li><a href="#projects" class="hover:text-indigo-600 transition">Projects</a></li>
-      <li><a href="#contact" class="hover:text-indigo-600 transition">Contact</a></li>
+      <li><a href="#skills" class="hover:underline transition" style="color: var(--color-text);">Skills</a></li>
+      <li><a href="#timeline" class="hover:underline transition" style="color: var(--color-text);">Timeline</a></li>
+      <li><a href="#projects" class="hover:underline transition" style="color: var(--color-text);">Projects</a></li>
+      <li><a href="#contact" class="hover:underline transition" style="color: var(--color-text);">Contact</a></li>
     </ul>
   </nav>
 
@@ -23,12 +24,13 @@
     class="md:hidden focus:outline-none z-50"
   >
     <svg
-      class="w-6 h-6 text-indigo-700"
+      class="w-6 h-6"
       fill="none"
       stroke="currentColor"
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
+      style="color: var(--hero-bg-from);"
     >
       <path d="M4 6h16M4 12h16M4 18h16" />
     </svg>
@@ -37,29 +39,32 @@
   <!-- Backdrop -->
   <div
     id="menu-backdrop"
-    class="fixed inset-0 hidden z-40 bg-black/60"
+    class="fixed inset-0 hidden z-40"
+    style="background: var(--color-background); opacity: 0.6;"
   ></div>
 
   <!-- Side drawer menu -->
   <aside
     id="mobile-menu"
-    class="fixed top-0 right-0 h-full w-3/5 max-w-xs bg-white shadow-lg hidden flex flex-col p-8 z-50"
+    class="fixed top-0 right-0 h-full w-3/5 max-w-xs shadow-lg hidden flex flex-col p-8 z-50"
+    style="background: var(--color-background);"
     role="dialog"
     aria-modal="true"
   >
     <button
       id="menu-close-btn"
       aria-label="Close menu"
-      class="self-end text-gray-700 text-4xl focus:outline-none"
+      class="self-end text-4xl focus:outline-none"
+      style="color: var(--color-text);"
     >
       &times;
     </button>
 
-    <nav class="mt-12 flex flex-col gap-8 text-gray-700 text-2xl font-semibold">
-      <a href="#skills" class="hover:text-indigo-600 transition">Skills</a>
-      <a href="#timeline" class="hover:text-indigo-600 transition">Timeline</a>
-      <a href="#projects" class="hover:text-indigo-600 transition">Projects</a>
-      <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+    <nav class="mt-12 flex flex-col gap-8 text-2xl font-semibold" style="color: var(--color-text);">
+      <a href="#skills" class="hover:underline transition" style="color: var(--color-text);">Skills</a>
+      <a href="#timeline" class="hover:underline transition" style="color: var(--color-text);">Timeline</a>
+      <a href="#projects" class="hover:underline transition" style="color: var(--color-text);">Projects</a>
+      <a href="#contact" class="hover:underline transition" style="color: var(--color-text);">Contact</a>
     </nav>
   </aside>
 

@@ -7,6 +7,8 @@ export default defineConfig({
   site: 'https://basalt79.github.io',
   base: "/portfolio/",
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [
+      tailwindcss()
+    ]
   }
 });
